@@ -6,7 +6,8 @@ import "./index.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"
 import "katex/dist/katex.min.css";
-import "prismjs/themes/prism-okaidia.css"
+import "prismjs/themes/prism-okaidia.css";
+import "ats-editor/dist/toast.css";
 const App = () => {
   return <Editor text="Create React Library Example 😄" />
 }
