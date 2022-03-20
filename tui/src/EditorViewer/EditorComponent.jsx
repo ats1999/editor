@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { Editor } from "@toast-ui/react-editor";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import tableMergedCell from "@toast-ui/editor-plugin-table-merged-cell";
@@ -152,6 +152,34 @@ export default function EditorComponent(props) {
       document.body.removeEventListener("keydown", keyEventLitener);
     };
   }, []);
+  
+  const getEmptyStringIfUndefined = (str) => {
+    return str || "";
+  };
+
+  const mdChange = () => {
+    getMd(
+      getEmptyStringIfUndefined(
+        editorRef?.current?.getInstance()?.getMarkdown()
+      )
+    );
+    getTitle(
+      getEmptyStringIfUndefined(
+        editorRef?.current?.getRootElement().getElementsByTagName("h1")[0]
+          ?.innerText
+      )
+    );
+    getDescription(
+      getEmptyStringIfUndefined(
+        editorRef?.current?.getRootElement().getElementsByTagName("p")[0]
+          ?.innerText
+      )
+    );
+
+    getHTML(
+      getEmptyStringIfUndefined(editorRef?.current?.getInstance().getHTML())
+    );
+  };
 
   return (
     <Editor
@@ -164,6 +192,7 @@ export default function EditorComponent(props) {
       theme={theme}
       widgetRules={widgetRules}
       autofocus={false}
+      onBlur={mdChange}
       hooks={{
         addImageBlobHook: (blob, callback) => {
           uploadImage(blob)
