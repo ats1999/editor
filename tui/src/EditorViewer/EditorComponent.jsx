@@ -48,6 +48,7 @@ import {
   toggleFullScreen,
   previewStyleButton,
   darkMode,
+  // tocMake
 } from "./toolbarItems";
 
 import customHTMLRenderer from "./customHTMLRenderer";
@@ -179,6 +180,14 @@ export default function EditorComponent(props) {
     getHTML(
       getEmptyStringIfUndefined(editorRef?.current?.getInstance().getHTML())
     );
+
+    getHTML(
+      getEmptyStringIfUndefined(
+        editorRef?.current
+          ?.getRootElement()
+          .getElementsByClassName('toastui-editor-contents')[0].innerHTML
+      )
+    )
   };
 
   return (
@@ -218,6 +227,10 @@ export default function EditorComponent(props) {
                   el: previewStyleButton(togglePreviewStyle),
                   tooltip: "Preview Mode",
                 },
+                // {
+                //   el: tocMake(editorRef),
+                //   tooltip: 'Make TOC'
+                // },
                 {
                   el: darkMode(toggleDarkMode),
                   tooltip: "Dark Mode",
