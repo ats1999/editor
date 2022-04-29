@@ -52,7 +52,7 @@ import {
 } from "./toolbarItems";
 
 import customHTMLRenderer from "./customHTMLRenderer";
-
+import axios from "axios";
 const umlOptions = {
   rendererURL: "https://www.plantuml.com/plantuml/svg/",
 };
@@ -153,7 +153,7 @@ export default function EditorComponent(props) {
       document.body.removeEventListener("keydown", keyEventLitener);
     };
   }, []);
-  
+
   const getEmptyStringIfUndefined = (str) => {
     return str || "";
   };
@@ -185,9 +185,9 @@ export default function EditorComponent(props) {
       getEmptyStringIfUndefined(
         editorRef?.current
           ?.getRootElement()
-          .getElementsByClassName('toastui-editor-contents')[0].innerHTML
+          .getElementsByClassName("toastui-editor-contents")[0].innerHTML
       )
-    )
+    );
   };
 
   return (
@@ -261,4 +261,19 @@ EditorComponent.defaultProps = {
   getTitle: () => {},
   getDescription: () => {},
   getHTML: (html) => {},
+  uploadImage: (blob) => {
+    const formData = new FormData();
+    formData.append("image", blob);
+
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${process.env.NEXT_PUBLIC_HOST}/api/post/image`, formData, {
+          headers: {
+            "Content-type": "multipart/form-data",
+          },
+        })
+        .then((res) => resolve(res.data))
+        .catch(reject);
+    });
+  },
 };
