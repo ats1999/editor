@@ -4,30 +4,6 @@ import mermaid from "mermaid";
 
 const mermaidAPI = mermaid.mermaidAPI;
 
-const inlineRenderRegex = {
-  youtube: /\s*youtube\s*:.+/i,
-};
-
-const isYoutube = (str) => inlineRenderRegex.youtube.test(str);
-
-const removeFrameCode = (code, str) => {
-  let regex = new RegExp("\\s*" + code + "\\s*:");
-  return str?.replace(regex, "")?.trim();
-};
-
-const getFrame = (src) => `
-<iframe width="100%" height="400"
-    src="${src}"
-    allowfullscreen="allowfullscreen"
-    mozallowfullscreen="mozallowfullscreen" 
-    msallowfullscreen="msallowfullscreen" 
-    oallowfullscreen="oallowfullscreen" 
-    webkitallowfullscreen="webkitallowfullscreen"
->
-The fallback
-</iframe>
-`;
-
 /**
  * Get  html repersentation of asci Tex
  * @param {String} str asci Tex
