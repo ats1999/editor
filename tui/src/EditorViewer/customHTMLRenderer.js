@@ -156,54 +156,19 @@ const renderer = {
       { type: "closeTag", tagName: "div", outerNewLine: true },
     ];
   },
-
-  // iframe custom blocks
-  embed(node) {
-    try {
-      if (!node.literal || !/\s*\w+\s*:.+/gm.test(node.literal))
-        throw "Invalid args";
-
-      const src = isYoutube(node.literal)
-        ? `https://www.youtube.com/embed/${node.literal?.split(":")[1]?.trim()}`
-        : removeFrameCode(node.literal?.split(":")[0]?.trim(), node.literal);
-
-      const allowedHosts = [
-        "www.linkedin.com",
-        "codepen.io",
-        "stackoverflow.com",
-        "codesandbox.io",
-        "www.youtube.com",
-      ];
-
-      if (!allowedHosts.includes(new URL(src).hostname))
-        throw "Invalid host name";
-
-      const frame = getFrame(src);
-      console.log(src, frame);
+  htmlBlock: {
+    iframe(node) {
       return [
         {
           type: "openTag",
-          tagName: "div",
+          tagName: "iframe",
           outerNewLine: true,
+          attributes: node.attrs,
         },
-        { type: "html", content: frame },
-        { type: "closeTag", tagName: "div", outerNewLine: true },
+        { type: "html", content: node.childrenHTML },
+        { type: "closeTag", tagName: "iframe", outerNewLine: true },
       ];
-    } catch (e) {
-      console.log(e);
-      return [
-        {
-          type: "openTag",
-          tagName: "div",
-          outerNewLine: true,
-        },
-        {
-          type: "html",
-          content: `<a href="https://www.dsabyte.com/posts/blog/Embedding-iframe-on-dsabyte-online-editor/617512c844214ad4632bbe16" target="_blank">Learn more about embedding content on @dsabyte</a>`,
-        },
-        { type: "closeTag", tagName: "div", outerNewLine: true },
-      ];
-    }
+    },
   },
 };
 
