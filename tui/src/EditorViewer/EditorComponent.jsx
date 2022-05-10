@@ -201,6 +201,7 @@ export default function EditorComponent(props) {
       theme={theme}
       widgetRules={widgetRules}
       autofocus={false}
+      frontMatter={true}
       onBlur={mdChange}
       hooks={{
         addImageBlobHook: (blob, callback) => {
