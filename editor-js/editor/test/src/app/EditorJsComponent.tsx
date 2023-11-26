@@ -10,7 +10,6 @@ export default function EditorJsComponent({ id }: any) {
       return;
     }
 
-    debugger;
     const editor = EditorJSEditor({
       holder: id,
       onChange: (data: any) => console.log(data),
