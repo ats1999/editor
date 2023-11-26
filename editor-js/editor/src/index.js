@@ -16,7 +16,7 @@ module.exports = function ({ holder, data, fileUploader, onChange }) {
     },
     onChange: async (api, event) => {
       const data = await api.saver.save();
-      onChange(data);
+      onChange({ ...data, type: "EDITOR_JS" });
     },
   });
 
