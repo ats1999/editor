@@ -14,6 +14,47 @@
       }
     },
     {
+      "id": "oxTDQe59tR",
+      "type": "button",
+      "data": {
+        "link": "https://chat.openai.com/c/47059b06-63de-45c2-9d41-f3c5ddeaf2e2",
+        "text": "Let's Chat"
+      },
+      "tunes": {
+        "textVariantTune": ""
+      }
+    },
+    {
+      "id": "0oVve2s9c3",
+      "type": "paragraph",
+      "data": {
+        "text": "Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.&nbsp;"
+      },
+      "tunes": {
+        "textVariantTune": "call-out"
+      }
+    },
+    {
+      "id": "0oVve2s9c3",
+      "type": "paragraph",
+      "data": {
+        "text": "Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.&nbsp;"
+      },
+      "tunes": {
+        "textVariantTune": "citation"
+      }
+    },
+    {
+      "id": "0oVve2s9c3",
+      "type": "paragraph",
+      "data": {
+        "text": "Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.&nbsp;"
+      },
+      "tunes": {
+        "textVariantTune": "details"
+      }
+    },
+    {
       "id": "NeZJ0CPV6E",
       "type": "paragraph",
       "data": {

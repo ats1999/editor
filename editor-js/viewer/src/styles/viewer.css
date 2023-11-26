@@ -1,0 +1,307 @@
+/* General CSS Applied to all components */
+/* <link rel="stylesheet" href="../src/styles/viewer.css" /> */
+
+.blocks-viewer p,
+.blocks-viewer pre {
+    margin: 0;
+    padding: 0;
+}
+
+.blocks-viewer a {
+    color: #0000EE;
+}
+
+.blocks-viewer .text-left {
+    text-align: left;
+}
+
+.blocks-viewer .text-right {
+    text-align: right;
+}
+
+.blocks-viewer .text-center {
+    text-align: center;
+}
+
+.blocks-viewer .text-justify {
+    text-align: justify;
+}
+
+/* call-out styling */
+.blocks-viewer .text-tune-call-out {
+    padding: 1rem 1rem 1rem 3rem;
+    background: #e8f0fe;
+    border: 1px solid #3740ff;
+    color: #272eb5;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.blocks-viewer .text-tune-call-out::before {
+    content: "";
+
+    /* SVG via a data URI! */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23272eb5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M14 9.5c0-.825.675-1.5 1.5-1.5h1c.825 0 1.5.675 1.5 1.5v1c0 .825-.675 1.5-1.5 1.5h-1c-.825 0-1.5-.675-1.5-1.5v-1zM20 24h-8v-2h2v-6h-2v-2h6v8h2z"/><path d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 29C8.82 29 3 23.18 3 16S8.82 3 16 3s13 5.82 13 13-5.82 13-13 13z"/></svg>');
+    background-size: cover;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+    position: absolute;
+    left: 1rem;
+}
+
+.blocks-viewer .text-tune-call-out p+p {
+    margin-top: 1em;
+}
+
+.blocks-viewer .text-tune-call-out a {
+    color: #272eb5;
+    font-weight: bold;
+}
+
+
+.blocks-viewer .text-tune-citation {
+    padding: 20px 20px 20px 40px;
+    /* $verticalSpace $gutter $verticalSpace $gutter*2 */
+    overflow: auto;
+    background-color: rgba(180, 180, 180, 0.5);
+    border-radius: 2px;
+    box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.8);
+    font-style: italic;
+}
+
+.blocks-viewer .text-tune-citation::before {
+    content: '❝';
+    float: left;
+    font-size: 200%;
+    margin-left: -20px;
+    /* $gutter */
+}
+
+.blocks-viewer .text-tune-citation:after {
+    content: attr(cite);
+    display: block;
+    text-align: right;
+    font-size: 72%;
+}
+
+.blocks-viewer .text-tune-details {
+    background-color: #f9f9f9;
+    /* Background color for the details box */
+    border: 1px solid #ccc;
+    /* Border color */
+    border-radius: 4px;
+    /* Rounded corners */
+    padding: 8px;
+    /* Padding inside the details box */
+    margin-bottom: 10px;
+    /* Optional margin for spacing between details */
+}
+
+.blocks-viewer .paragraph {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+    /* Adjust color to your preference */
+    font-family: Arial, sans-serif;
+    /* Choose your preferred font */
+}
+
+/* 
+
+*/
+
+/* ALERT CSS */
+.blocks-viewer .alert {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.blocks-viewer .alert-type-primary {
+    background-color: #ebf8ff;
+    border: 1px solid #4299e1;
+    color: #2b6cb0;
+}
+
+.blocks-viewer .alert-type-secondary {
+    background-color: #f7fafc;
+    border: 1px solid #cbd5e0;
+    color: #222731;
+}
+
+.blocks-viewer .alert-type-info {
+    background-color: #e6fdff;
+    border: 1px solid #4cd4ce;
+    color: #00727c;
+}
+
+.blocks-viewer .alert-type-success {
+    background-color: #f0fff4;
+    border: 1px solid #68d391;
+    color: #2f855a;
+}
+
+.blocks-viewer .alert-type-warning {
+    background-color: #fffaf0;
+    border: 1px solid #ed8936;
+    color: #c05621;
+}
+
+.blocks-viewer .alert-type-danger {
+    background-color: #fff5f5;
+    border: 1px solid #fc8181;
+    color: #c53030;
+}
+
+.blocks-viewer .alert-type-light {
+    background-color: #fff;
+    border: 1px solid #edf2f7;
+    color: #1a202c;
+}
+
+.blocks-viewer .alert-type-dark {
+    background-color: #2d3748;
+    border: 1px solid #1a202c;
+    color: #d3d3d3;
+}
+
+
+/* CODE */
+
+.blocks-viewer .token.operator {
+    color: unset;
+    background-color: unset;
+}
+
+.blocks-viewer .block .caption {
+    background-color: rgb(178, 178, 178);
+    font-size: 12px;
+    color: rgb(38, 38, 39);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.blocks-viewer .inline-code {
+    background: rgba(250, 239, 240, .78);
+    color: #b44437;
+    padding: 3px 4px;
+    border-radius: 5px;
+    margin: 0 1px;
+    font-family: inherit;
+    font-size: .86em;
+    font-weight: 500;
+    letter-spacing: .3px;
+}
+
+/* HEADING */
+
+.blocks-viewer .h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+    color: #333;
+    /* Adjust color to your preference */
+}
+
+.blocks-viewer .h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0;
+    color: #333;
+}
+
+.blocks-viewer .h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 1em 0;
+    color: #333;
+}
+
+.blocks-viewer .h4 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1.33em 0;
+    color: #333;
+}
+
+.blocks-viewer .h5 {
+    font-size: 0.83em;
+    font-weight: bold;
+    margin: 1.67em 0;
+    color: #333;
+}
+
+.blocks-viewer .h6 {
+    font-size: 0.67em;
+    font-weight: bold;
+    margin: 2.33em 0;
+    color: #333;
+}
+
+/* BLOCK QUOTE */
+.blocks-viewer .quote {
+    margin: 50px auto;
+    font-family: Open Sans;
+    font-style: italic;
+    color: #555555;
+    padding: 1.2em 30px 1.2em 75px;
+    border-left: 8px solid #78C0A8;
+    line-height: 1.6;
+    position: relative;
+    background: #EDEDED;
+}
+
+.blocks-viewer .quote::before {
+    font-family: Arial;
+    content: "\201C";
+    color: #78C0A8;
+    font-size: 4em;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+}
+
+.blocks-viewer .quote::after {
+    content: '';
+}
+
+.blocks-viewer .quote span {
+    display: block;
+    color: #333333;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+/* TABLE */
+
+.blocks-viewer .table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.blocks-viewer .table td,
+.blocks-viewer .table th {
+    border: 1px solid #c5c5c5;
+    text-align: left;
+    padding: 8px;
+}
+
+.blocks-viewer .table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/* IMAGE */
+.blocks-viewer .image {
+    width: 100%;
+}
+
+/* KATEX*/
+.blocks-viewer .katex {
+    font-size: 25px;
+}
