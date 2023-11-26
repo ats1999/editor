@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+.blocks-viewer .block {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .blocks-viewer a {
     color: #0000EE;
 }
