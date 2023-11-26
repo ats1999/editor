@@ -127,12 +127,36 @@
       }
     },
     {
+      "id": "apAs112yxv",
+      "type": "heading",
+      "data": {
+        "text": "What is Lorem Ipsum?",
+        "level": 3,
+        "alignment": "left"
+      },
+      "tunes": {
+        "textVariantTune": ""
+      }
+    },
+    {
       "id": "WsAEpd3MQC",
       "type": "alert",
       "data": {
         "type": "warning",
         "align": "left",
         "message": "TODO: we need to Fix Image Upload..."
+      },
+      "tunes": {
+        "textVariantTune": ""
+      }
+    },
+    {
+      "id": "apAs112yxv",
+      "type": "heading",
+      "data": {
+        "text": "What is Lorem Ipsum?",
+        "level": 4,
+        "alignment": "left"
       },
       "tunes": {
         "textVariantTune": ""
@@ -159,6 +183,18 @@
       "data": {
         "text": "How it's looking?",
         "caption": "",
+        "alignment": "left"
+      },
+      "tunes": {
+        "textVariantTune": ""
+      }
+    },
+    {
+      "id": "apAs112yxv",
+      "type": "heading",
+      "data": {
+        "text": "What is Lorem Ipsum?",
+        "level": 2,
         "alignment": "left"
       },
       "tunes": {

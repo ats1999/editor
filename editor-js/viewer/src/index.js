@@ -24,7 +24,7 @@ const renderers = {
   code,
 };
 
-module.exports = function (data) {
+function htmlRenderer(data) {
   const blocks = data.blocks;
   let html = "";
 
@@ -40,4 +40,21 @@ module.exports = function (data) {
   }
 
   return `<div class="blocks-viewer">${html}</div>`;
-};
+}
+
+function tocRenderer(data, tocMarginMultiplier = 10, minHeadingLevel = 2) {
+  const blocks = data.blocks;
+  let toc = '<ul style="list-style-type:none; padding:0;">';
+
+  for (const block of blocks) {
+    if (block.type === "heading") {
+      const margin = (block.data.level - minHeadingLevel) * tocMarginMultiplier;
+      toc += `<li style="margin-left:${margin}px;"><a href="#${block.id}">${block.data.text}</a></li>`;
+    }
+  }
+
+  toc += "</ul>";
+  return toc;
+}
+
+module.exports = { htmlRenderer, tocRenderer };

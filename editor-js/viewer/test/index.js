@@ -1,4 +1,8 @@
 const data = require("./data.json");
 const renderer = require("../dist/index");
+const fs = require("fs");
 
-console.log(renderer(data));
+const html = renderer.htmlRenderer(data);
+
+console.log(renderer.tocRenderer(data));
+fs.writeFileSync("./index.html", html);
