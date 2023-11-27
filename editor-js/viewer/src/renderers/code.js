@@ -16,7 +16,7 @@ module.exports = function codeBlock(block) {
   } = block;
   const html = Prism.highlight(code, Prism.languages[language], language);
   return `<div class="block code">
-    <p class="caption">${caption}</p>
+    ${caption ? `<p class="caption">${caption}</p>` : ""}
     <pre style="padding: 10px; background-color: #232428; color: white; overflow: scroll;" class="code-container">
       <code style="display: block;" class="code">${html}</code>
     </pre>

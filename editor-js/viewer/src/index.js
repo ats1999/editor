@@ -44,7 +44,8 @@ function htmlRenderer(data) {
 
 function tocRenderer(data, tocMarginMultiplier = 10, minHeadingLevel = 2) {
   const blocks = data.blocks;
-  let toc = '<ul class="viewer-toc" style="list-style-type:none; padding:0;">';
+  let toc =
+    '<ul class="viewer-toc" style="list-style-type:circle; padding:0;">';
 
   for (const block of blocks) {
     if (block.type === "heading") {
