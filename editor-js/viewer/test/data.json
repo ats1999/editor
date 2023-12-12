@@ -25,6 +25,21 @@
       }
     },
     {
+      "id": "MgAuM9Dk0O",
+      "type": "embed",
+      "data": {
+        "service": "youtube",
+        "source": "https://www.youtube.com/watch?v=n0ndkbVLv18",
+        "embed": "https://www.youtube.com/embed/n0ndkbVLv18",
+        "width": 580,
+        "height": 320,
+        "caption": ""
+      },
+      "tunes": {
+        "textVariantTune": ""
+      }
+    },
+    {
       "id": "0oVve2s9c3",
       "type": "paragraph",
       "data": {

@@ -9,6 +9,7 @@ const alert = require("./renderers/alert");
 const table = require("./renderers/table");
 const quote = require("./renderers/quote");
 const code = require("./renderers/code");
+const embed = require("./renderers/embed");
 
 const renderers = {
   heading,
@@ -22,6 +23,7 @@ const renderers = {
   table,
   quote,
   code,
+  embed,
 };
 
 function htmlRenderer(data) {
