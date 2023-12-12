@@ -8,7 +8,6 @@ const Marker = require("@editorjs/marker");
 const InlineCode = require("@editorjs/inline-code");
 const Delimiter = require("@editorjs/delimiter");
 const EditorjsNestedChecklist = require("@calumk/editorjs-nested-checklist");
-
 const Header = require("./header");
 const Button = require("./button");
 const Alert = require("./alert");
@@ -18,6 +17,7 @@ const Quote = require("./quote");
 const Image = require("./image");
 // const Link = require("./link");
 const CodeBlock = require("./CodeBlock");
+const Embed = require("./embed");
 
 const tools = (fileUploader) => {
   return {
@@ -45,6 +45,7 @@ const tools = (fileUploader) => {
     // warning: Warning,
     table: Table,
     quote: Quote,
+    embed: Embed,
     // TODO: fix, inline link is not working because of this
     // link: Link,
   };
