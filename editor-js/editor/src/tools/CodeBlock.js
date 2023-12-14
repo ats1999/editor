@@ -64,6 +64,7 @@ class CodeBlock {
     });
 
     this.codeCaption = document.createElement("input");
+    this.codeCaption.value = this.data.caption;
     this.codeCaption.classList.add("code-caption");
     this.codeCaption.type = "text";
     this.codeCaption.style.width = "100%";

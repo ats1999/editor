@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 // @ts-ignore
 import EditorJSEditor from "editor-js-editor";
 
-export default function EditorJsComponent({ id }: any) {
+export default function EditorJsComponent({ id, data }: any) {
   const editorRef = useRef<any>();
 
   useEffect(() => {
@@ -13,6 +13,7 @@ export default function EditorJsComponent({ id }: any) {
     const editor = EditorJSEditor({
       holder: id,
       onChange: (data: any) => console.log(data),
+      data,
     });
 
     editorRef.current = editor;
