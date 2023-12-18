@@ -41,7 +41,15 @@ class CodeBlock {
     this.languageSelect.style.padding = "5px";
     this.languageSelect.style.marginBottom = "5px";
 
-    const languages = ["javascript", "java", "python", "html", "css", "text"]; // Add more languages as needed
+    const languages = [
+      "javascript",
+      "java",
+      "python",
+      "html",
+      "css",
+      "text",
+      "sql",
+    ]; // Add more languages as needed
     languages.forEach((lang) => {
       const option = document.createElement("option");
       option.value = lang;
