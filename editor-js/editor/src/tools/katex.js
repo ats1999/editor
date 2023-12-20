@@ -74,7 +74,11 @@ class KatexBlock {
       actions: config.actions || [],
     };
 
-    this.tunesConfig = {};
+    this.tunesConfig = {
+      "Preview Expression": {
+        isActive: true,
+      },
+    };
   }
 
   renderKatexToString(tex) {
@@ -92,6 +96,7 @@ class KatexBlock {
     this.texEditorWrapper = document.createElement("div");
     this.texEditorWrapper.classList.add("tex-block");
     this.texEditorWrapper.id = `tex-editor-${blockId}`;
+    this.texEditorWrapper.style.display = "none";
 
     this.texInput = document.createElement("textarea");
     this.texInput.value = this.data.tex;
@@ -163,7 +168,6 @@ class KatexBlock {
     this.viewer = document.createElement("div");
     this.viewer.id = `tex-viewer-${blockId}`;
     this.viewer.innerHTML = this.renderKatexToString(this.data.tex);
-    this.viewer.style.display = "none";
 
     // tex block wrapper
     this.texBlockWrapper = document.createElement("div");
