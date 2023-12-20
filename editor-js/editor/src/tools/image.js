@@ -5,8 +5,8 @@ const imageToolConfig = (fileUploader) => {
     class: ImageTool,
     config: {
       uploader: {
-        uploadByFile: async (file) => {
-          const res = await fileUploader(file);
+        uploadByFile: async (file, id) => {
+          const res = await fileUploader(file, id);
           return {
             success: 1,
             file: {
@@ -14,7 +14,7 @@ const imageToolConfig = (fileUploader) => {
             },
           };
         },
-        uploadByUrl: async (url) => {
+        uploadByUrl: async (url, id) => {
           await Promise.resolve();
           return {
             success: 1,
