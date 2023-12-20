@@ -61,6 +61,7 @@ class KatexBlock {
   }
 
   constructor({ data, config, api, block }) {
+    this.isNewBlock = data.tex === undefined;
     this.api = api;
     this.block = block;
 
@@ -96,7 +97,6 @@ class KatexBlock {
     this.texEditorWrapper = document.createElement("div");
     this.texEditorWrapper.classList.add("tex-block");
     this.texEditorWrapper.id = `tex-editor-${blockId}`;
-    this.texEditorWrapper.style.display = "none";
 
     this.texInput = document.createElement("textarea");
     this.texInput.value = this.data.tex;
@@ -174,6 +174,12 @@ class KatexBlock {
     this.texBlockWrapper.appendChild(this.texEditorWrapper);
     this.texBlockWrapper.appendChild(this.viewer);
 
+    if (this.isNewBlock) {
+      this.viewer.style.display = "none";
+    } else {
+      this.texEditorWrapper.style.display = "none";
+    }
+    this.isNewBlock = false;
     return this.texBlockWrapper;
   }
 
@@ -205,7 +211,7 @@ class KatexBlock {
         this.tunesConfig[tune.label].isActive = !this.tuneActiveStatus(
           tune.label
         );
-        tune.onActivate.call(this, this.tunesConfig[tune.label].isActive);
+        tune.onActivate.call(this);
       },
     }));
   }
@@ -219,10 +225,10 @@ class KatexBlock {
         isActive: true,
         isDisabled: false,
         closeOnActivate: true,
-        onActivate: function (isActive) {
+        onActivate: function () {
           const editor = document.getElementById(`tex-editor-${this.block.id}`);
           const viewer = document.getElementById(`tex-viewer-${this.block.id}`);
-          if (isActive) {
+          if (editor.style.display !== "none") {
             editor.style.display = "none";
             viewer.style.display = "block";
             viewer.innerHTML = this.renderKatexToString(this.data.tex);
