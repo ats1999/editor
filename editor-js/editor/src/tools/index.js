@@ -1,9 +1,7 @@
-const KatexEditor = require("katex-editorjs");
 const MermaidTool = require("editorjs-mermaid");
 const Underline = require("@editorjs/underline");
 const TextVariantTune = require("@editorjs/text-variant-tune");
 const RawTool = require("@editorjs/raw");
-const NestedList = require("@editorjs/nested-list");
 const Marker = require("@editorjs/marker");
 const InlineCode = require("@editorjs/inline-code");
 const Delimiter = require("@editorjs/delimiter");
@@ -18,11 +16,12 @@ const Image = require("./image");
 // const Link = require("./link");
 const CodeBlock = require("./CodeBlock");
 const Embed = require("./embed");
+const katex = require("./katex");
+const nestedList = require("./nestedList");
 
 const tools = (fileUploader) => {
   return {
-    // FIXME: check why default is required here KatexEditor.default
-    katex: KatexEditor.default,
+    katex,
     // TODO: fix toggle block
     // toggle: ToggleBlock,
     mermaid: MermaidTool,
@@ -31,7 +30,7 @@ const tools = (fileUploader) => {
     raw: RawTool,
 
     // FIXME: inline formating is not working in nestedList
-    nestedList: NestedList,
+    nestedList,
     marker: Marker,
     inlineCode: InlineCode,
     image: Image(fileUploader),

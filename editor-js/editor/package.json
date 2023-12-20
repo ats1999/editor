@@ -29,7 +29,7 @@
     "editorjs-button": "^1.0.4",
     "editorjs-header-with-alignment": "^1.0.1",
     "editorjs-mermaid": "^1.0.0",
-    "katex-editorjs": "^1.0.2"
+    "katex": "^0.16.9"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
