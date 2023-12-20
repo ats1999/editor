@@ -9,6 +9,17 @@ const data = {
   time: 1702525930926,
   blocks: [
     {
+      id: "2CsQp43syr",
+      type: "katex",
+      data: {
+        tex: "\\sum_{i=0}^n A[i] = S",
+        displayMode: true,
+      },
+      tunes: {
+        textVariantTune: "",
+      },
+    },
+    {
       id: "YtMNC46PDw",
       type: "heading",
       data: {
