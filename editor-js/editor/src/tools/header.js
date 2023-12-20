@@ -8,6 +8,7 @@ const headerConfig = {
     defaultLevel: 2,
     defaultAlignment: "left",
   },
+  tunes: ["textVariantTune"],
 };
 
 module.exports = headerConfig;
