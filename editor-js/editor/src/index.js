@@ -10,7 +10,6 @@ module.exports = function ({ holder, data, fileUploader, onChange }) {
     holder: holder,
     data,
     tools: tools(fileUploader),
-    tunes: ["textVariantTune"],
     onReady: () => {
       MermaidTool.config({ theme: "neutral" });
     },

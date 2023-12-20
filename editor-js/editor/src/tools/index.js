@@ -18,6 +18,7 @@ const CodeBlock = require("./CodeBlock");
 const Embed = require("./embed");
 const katex = require("./katex");
 const nestedList = require("./nestedList");
+const paragraph = require("./paragraph");
 
 const tools = (fileUploader) => {
   return {
@@ -45,6 +46,7 @@ const tools = (fileUploader) => {
     table: Table,
     quote: Quote,
     embed: Embed,
+    paragraph,
     // TODO: fix, inline link is not working because of this
     // link: Link,
   };
