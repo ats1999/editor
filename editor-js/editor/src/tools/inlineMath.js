@@ -124,8 +124,8 @@ class InlineMath {
   }
   static get sanitize() {
     return {
-      [this.inlineMathTag]: {
-        class: this.inlineMathTagClass,
+      span: function () {
+        return true;
       },
     };
   }
