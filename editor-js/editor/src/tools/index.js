@@ -19,6 +19,7 @@ const Embed = require("./embed");
 const katex = require("./katex");
 const nestedList = require("./nestedList");
 const paragraph = require("./paragraph");
+const inlineMath = require("./inlineMath");
 
 const tools = (fileUploader) => {
   return {
@@ -47,6 +48,7 @@ const tools = (fileUploader) => {
     quote: Quote,
     embed: Embed,
     paragraph,
+    inlineMath,
     // TODO: fix, inline link is not working because of this
     // link: Link,
   };
