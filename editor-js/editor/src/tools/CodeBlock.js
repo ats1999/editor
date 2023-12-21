@@ -21,6 +21,7 @@ class CodeBlock {
     this.wrapper.classList.add("code-block");
 
     this.codeInput = document.createElement("textarea");
+    this.codeInput.classList.add("cdx-input");
     this.codeInput.value = this.data.code;
     this.codeInput.style.resize = "none";
     this.codeInput.style.width = "100%";
@@ -37,6 +38,7 @@ class CodeBlock {
     this.inputOptions.style.display = "flex";
 
     this.languageSelect = document.createElement("select");
+    this.languageSelect.classList.add("cdx-button");
     this.languageSelect.style.background = "#ececec";
     this.languageSelect.style.padding = "5px";
     this.languageSelect.style.marginBottom = "5px";
@@ -74,6 +76,7 @@ class CodeBlock {
     this.codeCaption = document.createElement("input");
     this.codeCaption.value = this.data.caption;
     this.codeCaption.classList.add("code-caption");
+    this.codeCaption.classList.add("cdx-input");
     this.codeCaption.type = "text";
     this.codeCaption.style.width = "100%";
     this.codeCaption.style.paddingLeft = "10px";
