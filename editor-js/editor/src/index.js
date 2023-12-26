@@ -1,7 +1,10 @@
 const EditorJS = require("@editorjs/editorjs");
 const tools = require("./tools/index");
 const MermaidTool = require("editorjs-mermaid");
+
+// css required by multiple components
 require("katex/dist/katex.css");
+require("editor-js-viewer/dist/viewer.css");
 
 module.exports = function ({ holder, data, fileUploader, onChange }) {
   // FIXME: check why default is required here EditorJS.default

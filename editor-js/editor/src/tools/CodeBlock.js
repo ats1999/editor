@@ -1,24 +1,87 @@
+const Prism = require("prismjs");
+
+require("prismjs/components/prism-java.min.js");
+require("prismjs/components/prism-cilkcpp.min.js");
+require("prismjs/components/prism-python.min.js");
+require("prismjs/components/prism-diff.min.js");
+require("prismjs/components/prism-bash.min.js");
+require("prismjs/components/prism-json.min.js");
+require("prismjs/components/prism-sql.min.js");
+require("prismjs/components/prism-latex.min.js");
+require("prismjs/components/prism-markdown.min.js");
+
+// css files
+require("prismjs/themes/prism-coy.min.css");
+// https://www.svgrepo.com/vectors/code/4
+const codeBlockIcon = `
+<svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="800px" height="800px" viewBox="0 0 32 32" xml:space="preserve">
+<style type="text/css">
+	.feather_een{fill:#0B1719;}
+</style>
+<path class="feather_een" d="M8.5,10h-2C6.224,10,6,9.776,6,9.5v0C6,9.224,6.224,9,6.5,9h2C8.776,9,9,9.224,9,9.5v0
+	C9,9.776,8.776,10,8.5,10z M7,11.5L7,11.5C7,11.776,7.224,12,7.5,12h2c0.276,0,0.5-0.224,0.5-0.5v0c0-0.276-0.224-0.5-0.5-0.5h-2
+	C7.224,11,7,11.224,7,11.5z M7.5,18h2c0.276,0,0.5-0.224,0.5-0.5l0,0c0-0.276-0.224-0.5-0.5-0.5h-2C7.224,17,7,17.224,7,17.5l0,0
+	C7,17.776,7.224,18,7.5,18z M6.5,20h2C8.776,20,9,19.776,9,19.5l0,0C9,19.224,8.776,19,8.5,19h-2C6.224,19,6,19.224,6,19.5l0,0
+	C6,19.776,6.224,20,6.5,20z M22,13.5L22,13.5c0,0.276-0.224,0.5-0.5,0.5h-13C8.224,14,8,13.776,8,13.5v0C8,13.224,8.224,13,8.5,13
+	h13C21.776,13,22,13.224,22,13.5z M8.5,16h13c0.276,0,0.5-0.224,0.5-0.5v0c0-0.276-0.224-0.5-0.5-0.5h-13C8.224,15,8,15.224,8,15.5
+	v0C8,15.776,8.224,16,8.5,16z M16.5,12h-5c-0.276,0-0.5-0.224-0.5-0.5v0c0-0.276,0.224-0.5,0.5-0.5h5c0.276,0,0.5,0.224,0.5,0.5v0
+	C17,11.776,16.776,12,16.5,12z M20.5,9h-10C10.224,9,10,9.224,10,9.5v0c0,0.276,0.224,0.5,0.5,0.5h10c0.276,0,0.5-0.224,0.5-0.5v0
+	C21,9.224,20.776,9,20.5,9z M29,4H3C1.343,4,0,5.343,0,7v16c0,1.657,1.343,3,3,3h9v3h-1.5c-0.276,0-0.5,0.224-0.5,0.5l0,0
+	c0,0.276,0.224,0.5,0.5,0.5h11c0.276,0,0.5-0.224,0.5-0.5l0,0c0-0.276-0.224-0.5-0.5-0.5H20v-3h9c1.657,0,3-1.343,3-3V7
+	C32,5.343,30.657,4,29,4z M19,29h-6v-3h6V29z M31,23c0,1.105-0.895,2-2,2H3c-1.105,0-2-0.895-2-2V7c0-1.105,0.895-2,2-2h26
+	c1.105,0,2,0.895,2,2V23z"/>
+</svg>
+`;
+
 class CodeBlock {
+  static languages = [
+    "javascript",
+    "java",
+    "python",
+    "html",
+    "css",
+    "text",
+    "sql",
+  ];
+
   static get toolbox() {
     return {
       title: "Code Block",
-      icon: '<svg width="17" height="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M120.9 292.7L0 372.6V478c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12V372.6l-120.9-79.9c-3.4-2.3-7.8-2.3-11.2 0L120.9 292.7zM240 317.2L347.1 372H100.9L208 317.2c2.4-1.6 5.6-1.6 8 0zm208-44.8L375.1 245l72.9-48.5C451.8 190.5 464 172 464 152s-12.2-38.5-35.1-44.5L375.1 59 448 10.6c5.2-4.3 6-11.7 1.7-16.9l-12-14.5c-4.3-5.2-11.7-6-16.9-1.7L336 39.1 288.9 0c-16.6-8.5-35.6-8.5-52.2 0L112 39.1 80.9 11.5C75.7 6.3 68.3 5.5 64.1 9.8l-12 14.5c-4.3 5.2-3.5 12.6 1.7 16.9L73 59 0 107.4C2.9 111.4 16 129.9 16 152s-13.1 40.6-29 44.6L72.9 245l-39 26C25.6 276.4 16 291.8 16 308s9.6 31.6 17.9 37l39 26 29-19.3C104.4 342 120 352 136 352s31.6-9.6 37-17.3l29-19.3 50 33.3-5.1 19.5c-2 7.6-1 15.6 2.7 22.3l18 32.4 32.3 58.2c6.3 11.3 20.5 15.5 31.8 9.2l45.2-25.6 50 33.3-45.2 25.6c-11.3 6.3-25.5 2.1-31.8-9.2l-32.3-58.2-18-32.4c-3.7-6.7-10.9-11-18.7-11H64c-8.8 0-16-7.2-16-16s7.2-16 16-16h130.3c14.2 0 26.5-10 29.5-24h134.3c3 14 15.3 24 29.5 24H384c8.8 0 16 7.2 16 16s-7.2 16-16 16H238.2c-1.1 7.1-4.3 14.1-9.3 19.2L240 272.4zM69.8 137.5l10.5-40.2L184.3 92l-94.2 45.5zM360 258.3L320.2 274 360 289.7V258.3zM208 142.8l89.1-59.4 22.7 41.4-89.1 59.4zM192 88.4l51.1 93.1-22.7 13.4-51.1-93.1zM23.5 165l94.2-45.5 22.7 41.4-94.2 45.5z"/></svg>',
+      icon: codeBlockIcon,
     };
   }
 
-  constructor({ data, config, api }) {
+  constructor({ data, config, api, block }) {
+    this.isNewBlock =
+      data.code === undefined &&
+      data.caption === undefined &&
+      data.language === undefined;
+
     this.api = api;
+    this.block = block;
     this.data = {
       code: data.code || "",
       language: data.language || "javascript",
       caption: data.caption || "",
     };
-    this.wrapper = undefined;
+    this.config = {
+      actions: config.actions || [],
+    };
+
+    this.tunesConfig = {
+      "Preview Code": {
+        isActive: true,
+      },
+    };
+    this.codeEditor = undefined;
   }
 
   render() {
-    this.wrapper = document.createElement("div");
-    this.wrapper.classList.add("code-block");
+    const blockId = this.block.id;
+    this.codeEditor = document.createElement("div");
+    this.codeEditor.id = `code-editor-${blockId}`;
+    this.codeEditor.classList.add("code-block");
 
     this.codeInput = document.createElement("textarea");
     this.codeInput.classList.add("cdx-input");
@@ -43,15 +106,7 @@ class CodeBlock {
     this.languageSelect.style.padding = "5px";
     this.languageSelect.style.marginBottom = "5px";
 
-    const languages = [
-      "javascript",
-      "java",
-      "python",
-      "html",
-      "css",
-      "text",
-      "sql",
-    ]; // Add more languages as needed
+    const languages = CodeBlock.languages; // Add more languages as needed
     languages.forEach((lang) => {
       const option = document.createElement("option");
       option.value = lang;
@@ -90,8 +145,25 @@ class CodeBlock {
     this.inputOptions.appendChild(this.languageSelect);
     this.inputOptions.appendChild(this.codeCaption);
 
-    this.wrapper.appendChild(this.inputOptions);
-    this.wrapper.appendChild(this.codeInput);
+    this.codeEditor.appendChild(this.inputOptions);
+    this.codeEditor.appendChild(this.codeInput);
+
+    this.codeViewer = document.createElement("div");
+    this.codeViewer.classList.add("blocks-viewer");
+    this.codeViewer.id = `code-viewer-${this.block.id}`;
+
+    this.codeViewer.innerHTML = this.renderDataToHtml();
+
+    this.wrapper = document.createElement("div");
+    this.wrapper.appendChild(this.codeEditor);
+    this.wrapper.appendChild(this.codeViewer);
+
+    if (this.isNewBlock) {
+      this.codeViewer.style.display = "none";
+      this.tunesConfig["Preview Code"].isActive = false;
+    } else {
+      this.codeEditor.style.display = "none";
+    }
 
     return this.wrapper;
   }
@@ -106,6 +178,75 @@ class CodeBlock {
 
   static get enableLineBreaks() {
     return true;
+  }
+
+  renderDataToHtml() {
+    const codeLanguage = this.data.language || CodeBlock.languages[0];
+
+    const highlightedCode = Prism.highlight(
+      this.data.code,
+      Prism.languages[codeLanguage],
+      codeLanguage
+    );
+
+    return `<div class="block code">
+    ${this.data.caption ? `<p class="caption">${this.data.caption}</p>` : ""}
+    <pre style="padding: 10px; background-color: #232428; color: white; overflow: scroll;" class="code-container">
+      <code style="display: block;" class="code">${highlightedCode}</code>
+    </pre>
+  </div>`;
+  }
+  tuneActiveStatus(tuneLabel) {
+    return this.tunesConfig[tuneLabel] && this.tunesConfig[tuneLabel].isActive;
+  }
+
+  renderSettings() {
+    const tunes = this.tunes.concat(this.config.actions);
+    return tunes.map((tune) => ({
+      ...tune,
+      isActive: this.tuneActiveStatus(tune.label),
+      onActivate: () => {
+        if (!this.tunesConfig[tune.label]) {
+          this.tunesConfig[tune.label] = {};
+        }
+
+        this.tunesConfig[tune.label].isActive = !this.tuneActiveStatus(
+          tune.label
+        );
+        tune.onActivate.call(this);
+      },
+    }));
+  }
+
+  get tunes() {
+    return [
+      {
+        icon: codeBlockIcon,
+        label: "Preview Code",
+        toggle: true,
+        isActive: true,
+        isDisabled: false,
+        closeOnActivate: true,
+        onActivate: function () {
+          const editor = document.getElementById(
+            `code-editor-${this.block.id}`
+          );
+          const viewer = document.getElementById(
+            `code-viewer-${this.block.id}`
+          );
+
+          if (editor.style.display !== "none") {
+            editor.style.display = "none";
+            viewer.style.display = "block";
+            viewer.innerHTML = this.renderDataToHtml();
+            return;
+          }
+
+          editor.style.display = "block";
+          viewer.style.display = "none";
+        },
+      },
+    ];
   }
 }
 
