@@ -1,6 +1,7 @@
 const EditorJS = require("@editorjs/editorjs");
 const tools = require("./tools/index");
 const MermaidTool = require("editorjs-mermaid");
+const { setLocalStorage } = require("./tools/lib/localStorage");
 
 // css required by multiple components
 require("katex/dist/katex.css");
@@ -19,6 +20,7 @@ module.exports = function ({ holder, data, fileUploader, onChange }) {
     },
     onChange: async (api, event) => {
       const data = await api.saver.save();
+      setLocalStorage(holder, JSON.stringify(data));
       onChange({ ...data, type: "EDITOR_JS" });
     },
   });
