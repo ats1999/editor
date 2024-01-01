@@ -191,7 +191,7 @@ class CodeBlock {
 
     return `<div class="block code">
     ${this.data.caption ? `<p class="caption">${this.data.caption}</p>` : ""}
-    <pre style="padding: 10px; background-color: #232428; color: white; overflow: scroll;" class="code-container">
+    <pre style="padding: 10px; background-color: #232428; color: white; overflow: scroll; display:flex;" class="code-container">
       <code style="display: block;" class="code">${highlightedCode}</code>
     </pre>
   </div>`;
