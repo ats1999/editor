@@ -6,5 +6,7 @@ module.exports = function (block) {
   } = block;
   return `<h${level} id="${id}" class="block heading text-${alignment} ${
     textVariantTune && `text-tune-${textVariantTune}`
-  }">${text}</h${level}>`;
+  }">
+    <a class="hash-anchor" href="#${id}" onclick="navigator.clipboard.writeText(this.href);">${text}</a>
+  </h${level}>`;
 };

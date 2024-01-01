@@ -310,3 +310,39 @@
 .blocks-viewer .katex {
     font-size: 25px;
 }
+
+.blocks-viewer .heading .hash-anchor {
+    text-decoration: unset;
+    color: unset;
+    transition: text-decoration .5s ease-in-out, visibility 0s linear .5s;
+}
+
+.blocks-viewer .heading .hash-anchor::after {
+    content: "";
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    color: gray;
+    margin-left: 5px;
+}
+
+.blocks-viewer .heading:focus .hash-anchor::after {
+    content: "#";
+    opacity: 1;
+}
+
+.blocks-viewer .heading .hash-anchor:hover::after {
+    content: "#";
+    opacity: 1;
+}
+
+.blocks-viewer .heading .hash-anchor::after {
+    content: "#";
+}
+
+/* 
+// FIXME: not working, can not show copied whenever someone click on anchor
+.blocks-viewer .heading .hash-anchor:active::after {
+    content: "Copied";
+    opacity: 1;
+    color: green;
+} */
