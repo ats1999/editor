@@ -43,6 +43,7 @@ class CodeBlock {
     "css",
     "text",
     "sql",
+    "bash",
   ];
 
   static get toolbox() {
